@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MusicModels\Category.cs" />
+    <Compile Remove="MusicModels\FullPlaylist.cs" />
+    <Compile Remove="MusicModels\PagedQuery.cs" />
+    <Compile Remove="MusicModels\Paging.cs" />
+    <Compile Remove="MusicModels\PlaylistTrack.cs" />
+    <Compile Remove="MusicModels\PlaylistTrackCollection.cs" />
+    <Compile Remove="MusicModels\PublicProfile.cs" />
+    <Compile Remove="MusicModels\SimplePlaylist.cs" />
+    <Compile Remove="MusicModels\Track.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.Uris" Version="2.2.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="2.7.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SpotifyBrowser.Application.Shared\SpotifyBrowser.Application.Shared.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.Cqrs.Contracts\SpotifyBrowser.Cqrs.Contracts.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.Cqrs.Implementation\SpotifyBrowser.Cqrs.Implementation.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.Host\SpotifyBrowser.Host.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.WriteStack.Application\SpotifyBrowser.WriteStack.Application.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.WriteStack.Domain.Implementation\SpotifyBrowser.WriteStack.Domain.Implementation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\readme.MD">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App_Data\readme.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

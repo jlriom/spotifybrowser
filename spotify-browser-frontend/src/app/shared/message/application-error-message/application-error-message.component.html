@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">Spotify Browser</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="alert alert-danger" role="alert">
+    <strong>{{ errorMessage.errorType === businessRemoteError ? 'An application error occurred' : 'Internal error occurred' }}: </strong> <br>
+    {{ errorMessage.message }}
+  </div>
+  <div *ngIf="errorMessage.details && errorMessage.details.length> 0">
+    <div *ngFor="let detail of errorMessage.details">
+      <div class="alert alert-danger" role="alert">
+        {{ detail }}
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="close()">Close</button>
+</div> 

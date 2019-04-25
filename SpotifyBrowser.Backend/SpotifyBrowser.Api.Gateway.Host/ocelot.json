@@ -1,0 +1,154 @@
+{
+
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/sr/{everything}",
+      "UpstreamHttpMethod": [ "Options", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 6003
+        }
+      ],
+      "UpstreamPathTemplate": "/api/sw/{everything}",
+      "UpstreamHttpMethod": [ "Options", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7002
+        }
+      ],
+      "UpstreamPathTemplate": "/api/ur/{everything}",
+      "UpstreamHttpMethod": [ "Options", "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7003
+        }
+      ],
+      "UpstreamPathTemplate": "/api/uw/{everything}",
+      "UpstreamHttpMethod": [ "Options", "Post" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5002"
+  }
+
+  //"ReRoutes": [
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "ordering.api",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/api/{version}/o/{everything}",
+  //    "UpstreamHttpMethod": [],
+  //    "AuthenticationOptions": {
+  //      "AuthenticationProviderKey": "IdentityApiKey",
+  //      "AllowedScopes": []
+  //    }
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/{everything}",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "webshoppingagg",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/{everything}",
+  //    "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
+  //    "AuthenticationOptions": {
+  //      "AuthenticationProviderKey": "IdentityApiKey",
+  //      "AllowedScopes": []
+  //    }
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/{everything}",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "ordering.api",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/orders-api/{everything}",
+  //    "UpstreamHttpMethod": []
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/{everything}",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "ordering.signalrhub",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/hub/{everything}",
+  //    "UpstreamHttpMethod": []
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/{everything}",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "basket.api",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/basket-api/{everything}",
+  //    "UpstreamHttpMethod": []
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/{everything}",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "catalog.api",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/catalog-api/{everything}",
+  //    "UpstreamHttpMethod": []
+  //  },
+  //  {
+  //    "DownstreamPathTemplate": "/{everything}",
+  //    "DownstreamScheme": "http",
+  //    "DownstreamHostAndPorts": [
+  //      {
+  //        "Host": "payment.api",
+  //        "Port": 80
+  //      }
+  //    ],
+  //    "UpstreamPathTemplate": "/payment-api/{everything}",
+  //    "UpstreamHttpMethod": []
+  //  }
+
+  //],
+  //"GlobalConfiguration": {
+  //  "RequestIdKey": "OcRequestId",
+  //  "AdministrationPath": "/administration"
+  //}
+}
+  

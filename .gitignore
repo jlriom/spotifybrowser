@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+**/node_modules
+*.pubxml
+/spotify-browser-frontend/.vs
+/spotify-browser-frontend/src/assets/images/images

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SpotifyBrowser.Cqrs.Contracts\SpotifyBrowser.Cqrs.Contracts.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.Cqrs.Implementation\SpotifyBrowser.Cqrs.Implementation.csproj" />
+    <ProjectReference Include="..\SpotifyBrowser.User.ReadStack.DataAccess.Contracts\SpotifyBrowser.User.ReadStack.DataAccess.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

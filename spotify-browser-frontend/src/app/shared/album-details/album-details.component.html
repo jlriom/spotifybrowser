@@ -1,0 +1,45 @@
+<div *ngIf="album">
+
+  <div class="row">
+    <div class="col-2">
+      <a [href]="album.spotifyUrl" target="_blank">
+        <img class="img-fluid img-thumbnail" style="width: 200px;" [src]="album.imageUrl" [alt]="album.name"
+          *ngIf="album.imageUrl">
+      </a>
+    </div>
+    <div class="col-10">
+      <h4 class="mt-0">
+        {{ album.name }}
+        <small class="text-muted">
+          ({{ album.ReleaseYear }})
+        </small>
+      </h4>
+
+      <ul class="list-unstyled">
+        <li>
+          <strong class="text-muted">
+            Artists
+          </strong>
+        </li>
+        <li *ngFor="let artist of album.artists">
+          <a [routerLink]="" (click)="onArtistSelected(artist)">
+            {{ artist.name }}
+          </a>
+        </li>
+      </ul>
+
+      <ul class="list-unstyled" *ngIf="tracks">
+        <li>
+          <strong class="text-muted">
+            Songs
+          </strong>
+        </li>
+        <li *ngFor="let track of tracks.items">
+          {{ track.trackNumber }}.-
+          <a href="https://www.google.com/search?q={{track.name}}" target="_blank"> {{ track.name }} </a>
+          <small class="text-muted">({{ track.duration }}) </small>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

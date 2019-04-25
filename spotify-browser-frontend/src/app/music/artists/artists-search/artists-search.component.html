@@ -1,0 +1,71 @@
+<div class="container">
+  <br />
+  <div class="row justify-content-center">
+    <div class="col-12 ">
+      <form class="card card-sm" novalidate (ngSubmit)="searchArtists()" #searchArtistsCriteriaForm="ngForm">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="fa fa-search h4 text-body"></i>
+          </div>
+          <!--end of col-->
+          <div class=" col">
+            <input class="form-control form-control-lg form-control-borderless" type="search"
+              placeholder="Search artists..." [(ngModel)]="searchPattern" name="searchPattern">
+          </div>
+          <!--end of col-->
+          <div class="col-xs col-auto">
+            <button class="btn btn-lg btn-success" [disabled]="!(searchPattern && searchPattern.length > 2)"
+              type="submit">Search</button>
+          </div>
+          <!--end of col-->
+        </div>
+      </form>
+    </div>
+    <!--end of col-->
+  </div>
+
+  <div class="row d-flex mt-4 " *ngIf="currentPage && pagedArtist &&  pagedArtist.total > 0">
+    <div class="col-xs-12 col">
+      <ngb-pagination [collectionSize]="pagedArtist.total" [pageSize]="currentPage.limit" [maxSize]="5" [(page)]="currentPage.page"
+        aria-label="Default pagination" (pageChange)="onPageChanged($event)" [rotate]="true" [ellipses]="true"
+        [boundaryLinks]="true"></ngb-pagination>
+    </div>
+
+    <div class="col-xs-12 col my-2 text-right">
+      <strong class=""> {{ pagedArtist.total }} artists found </strong>
+    </div>
+
+  </div>
+
+  <div class="container" *ngIf="pagedArtist &&  pagedArtist.total > 0">
+
+    <div class="row">
+
+      <div *ngFor="let artist of pagedArtist.items">
+        <div class="card mb-4">
+          <a [href]="artist.spotifyUrl" target="_blank">
+            <img class="card-img-top" style="width: 200px;height: 200px;" [src]="artist.imageUrl"
+              [alt]="artist.name" *ngIf="artist.imageUrl">
+          </a>
+          <div class="card-body bg-light">
+            <p class="card-text" style="max-width: 170px;">
+              <a [routerLink]="" (click)="onArtistSelected(artist)">
+                {{ artist.name }}
+              </a>
+              <i *ngIf="artist.tags && artist.tags.length > 0 " 
+                class="fa fa-star" 
+                placement="right"  
+                [ngbPopover]="popContent"
+                popoverTitle="Tags"></i>
+              <ng-template #popContent>
+                <ul class="list-unstyled">
+                  <li *ngFor="let tag of artist.tags"> <small> <i> {{ tag }} </i></small> </li>
+                </ul>
+              </ng-template>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

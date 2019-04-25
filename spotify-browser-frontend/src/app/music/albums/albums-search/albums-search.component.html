@@ -1,0 +1,78 @@
+<div class="container">
+  <br />
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <form class="card card-sm" novalidate (ngSubmit)="searchAlbums()" #searchAlbumsCriteriaForm="ngForm">
+        <div class="card-body row no-gutters align-items-center">
+          <div class="col-auto">
+            <i class="fa fa-search h4 text-body"></i>
+          </div>
+          <!--end of col-->
+          <div class="col">
+            <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search albums..."
+              name="searchPattern" [(ngModel)]="searchPattern">
+          </div>
+          <!--end of col-->
+          <div class="col-xs col-auto">
+            <button class="btn btn-lg btn-success" type="submit" [disabled]="!(searchPattern && searchPattern.length > 2)">Search</button>
+          </div>
+          <!--end of col-->
+        </div>
+      </form>
+    </div>
+    <!--end of col-->
+  </div>
+
+
+  <div class="row d-flex mt-4 " *ngIf="currentPage && pagedAlbum &&  pagedAlbum.total > 0">
+
+    <div class="col-xs-12 col-md-6">
+      <ngb-pagination [collectionSize]="pagedAlbum.total" [pageSize]="currentPage.limit" [maxSize]="5" [(page)]="currentPage.page" aria-label="Default pagination"
+        (pageChange)="onPageChanged($event)" [rotate]="true" [ellipses]="true" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+
+    <div class="col-xs-12 col-md-6 my-2 text-right">
+      <strong class=""> {{ pagedAlbum.total }} albums found </strong>
+    </div>
+
+  </div>
+
+
+  <div class="container" *ngIf="pagedAlbum && pagedAlbum.total > 0">
+
+    <div class="row">
+
+      <div class="col-xs-12 col-md-6" *ngFor="let album of pagedAlbum.items">
+        <div class="media my-2" >
+          <a [href]="album.spotifyUrl" target="_blank">
+          <img class="img-fluid img-thumbnail" style="width: 200px;" [src]="album.imageUrl" [alt]="album.name"
+            *ngIf="album.imageUrl">
+          </a>
+          <div class="media-body mx-4">
+            <h5 class="mt-0">
+              <a [routerLink]="" (click)="onAlbumSelected(album)">
+                {{ album.name }}
+              </a>
+              <small class="text-muted">
+                ({{ album.ReleaseYear }})
+              </small>
+            </h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <strong class="text-muted">
+                  Artists
+                </strong>
+              </li>
+              <li *ngFor="let artist of album.artists">
+                <a [routerLink]="" (click)="onArtistSelected(artist)">
+                  {{ artist.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

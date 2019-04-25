@@ -1,0 +1,50 @@
+<h4>
+  <a href="https://www.google.com/search?q={{artist.name}}" target="_blank">{{ artist.name }} </a>
+</h4>
+
+<div>
+  <a [href]="artist.spotifyUrl" target="_blank">
+    <img class="img img-thumbnail" [src]="artist.imageUrl" [alt]="artist.name" *ngIf="artist.imageUrl">
+  </a>
+</div>
+
+<div class="mt-5" *ngIf="artist.tags">
+  <h5>Tags
+    <i class="fa fa-plus" (click)="toggleAddTag=false" *ngIf="toggleAddTag"></i>
+    <i class="fa fa-close" (click)="toggleAddTag=true" *ngIf="!toggleAddTag"></i>
+  </h5>
+  <ul class="list-unstyled">
+    <li *ngFor="let tag of artist.tags" class="list-inline-item mb-2">
+
+      <div class="btn-group btn-group-sm">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary btn-sm">{{ tag }} </button>
+          <button type="button" class="btn btn-primary btn-sm" (click)="onRemoveTagForArtist(tag)"> <i
+              class="fa fa-close"></i></button>
+        </div>
+      </div>
+
+    </li>
+    <li *ngIf="!toggleAddTag">
+      <div class="container">
+        <div class="row">
+          <form novalidate></form>
+          <input type="text" id="addTag" name="addTag" [(ngModel)]="newTagForArtist">
+          <button class="btn btn-outline-primary  btn-sm" (click)="onAddNewTagForArtist()"> add </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="mt-5" *ngIf="artistsTopTracks">
+  <h5>Top Tracks</h5>
+
+  <ul class="list-unstyled">
+    <li *ngFor="let track of artistsTopTracks">
+      <a href="https://www.google.com/search?q={{track.name}}" target="_blank">{{track.name }}</a> <small
+        class="text-mutedd">
+        ({{ track.duration }})</small>
+    </li>
+  </ul>
+</div>

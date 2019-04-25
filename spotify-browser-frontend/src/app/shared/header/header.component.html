@@ -1,0 +1,30 @@
+<nav class="navbar bg-light navbar-light navbar-expand-sm">
+  <div class="container">
+    <div class="h2 m-0 navbar-brand  d-none d-lg-inline">
+      <img src="../../../assets/images/iconfinder_Spotify_287625.svg" style="height: 20px; width: 20px;" alt="">
+      Spotify browser
+    </div>
+
+    <div class="navbar-nav ">
+      <a class="navbar-nav nav-link" [routerLink]="['/browse/categories']" routerLinkActive="active" *ngIf="isLoggedIn()"> Browse</a>
+      <a class="navbar-nav nav-link" [routerLink]="['/artists/search']" routerLinkActive="active" *ngIf="isLoggedIn()"> Artists</a>
+      <a class="navbar-nav nav-link" [routerLink]="['/albums/search']" routerLinkActive="active" *ngIf="isLoggedIn()"> Albums</a>
+      <a class="navbar-nav nav-link" [routerLink]="['/admin/users']" *ngIf="isAdmin()">Administration</a>
+    </div>
+
+    <div class="navbar-nav ">
+      <a class="navbar-nav nav-link" [routerLink]="[]" (click) = "register()" *ngIf="!isLoggedIn()">Register</a>
+      <a class="navbar-nav nav-link" [routerLink]="[]" (click)="login()" *ngIf="!isLoggedIn()">Login</a>
+      <div ngbDropdown class="d-inline-block "  *ngIf="isLoggedIn()" >
+          <button class="btn " id="dropdownBasic1" ngbDropdownToggle>{{ UserName() }}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+            <button class="dropdown-item" (click)="myprofile()">My Profile</button>
+            <button class="dropdown-item" (click)="changePassword()">Change Password</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" (click)="logout()" >Logout</button>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</nav>

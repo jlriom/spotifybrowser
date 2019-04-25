@@ -1,0 +1,20 @@
+<h5>
+  Related Artists
+</h5>
+
+<ul class="list-unstyled">
+  <li *ngFor="let artist of relatedArtists">
+    <div class="card mb-4">
+      <a [href]="artist.spotifyUrl" target="_blank">
+        <img class="card-img-top" [src]="artist.imageUrl" [alt]="artist.name" *ngIf="artist.imageUrl">
+      </a>
+      <div class="card-body bg-light">
+        <p class="card-text">
+          <a [routerLink]="" (click)="onArtistSelected(artist)">
+            {{ artist.name }}
+          </a>
+        </p>
+      </div>
+    </div>
+  </li>
+</ul>

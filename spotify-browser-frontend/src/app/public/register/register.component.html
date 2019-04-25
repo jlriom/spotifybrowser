@@ -1,0 +1,56 @@
+<form novalidate (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+  <div class="modal-header">
+    <h4 class="modal-title">Register</h4>
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <fieldset class="shadow-lg p-3  bg-white rounded">
+
+      <div class="form-group">
+        <label class="form-control-label" for="emailId">E-mail</label>
+        <input class="form-control" 
+          [ngClass]="{'is-invalid': isNotValidControl(emailVar) }"         
+          type="email" id="emailId" placeholder="E-mail" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+"
+          [(ngModel)]="registerInfo.email" name="email" maxlength="300" #emailVar="ngModel">
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="firstnameId">First name</label>
+        <input type="text" class="form-control" 
+          [ngClass]="{'is-invalid': isNotValidControl(firstnameVar) }"         
+          id="firstnameId" placeholder="first name" required minlength="3"
+          maxlength="300" [(ngModel)]="registerInfo.firstName" name="firstName" #firstnameVar="ngModel">
+        </div>
+      <div class="form-group">
+        <label class="form-control-label" for="lastnameId">Last name</label>
+        <input type="text" class="form-control" 
+          [ngClass]="{'is-invalid': isNotValidControl(lastnameVar) }"         
+          id="lastnameId" placeholder="Last name" required minlength="3"
+          maxlength="300" [(ngModel)]="registerInfo.lastName" name="lastName" #lastnameVar="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="passwordId" class="form-control-label">Password</label>
+        <input type="password" class="form-control" 
+          [ngClass]="{'is-invalid': isNotValidControl(passwordVar) }"         
+          id="passwordId" placeholder="Password" required [(ngModel)]="registerInfo.password"
+          name="password" #passwordVar="ngModel" (keypress)="passwordChanged()">
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="confirmPasswordId"> Confirm Password</label>
+        <input type="password" class="form-control" 
+          [ngClass]="{'is-invalid': isNotValidControl(confirmPasswordVar) }"         
+          id="confirmPasswordId" placeholder="Confirm Password" required
+          appConfirmEqualValidator="password" [(ngModel)]="registerInfo.confirmPassword" name="confirmPassword"
+          #confirmPasswordVar="ngModel">
+        <small id="confirmPasswordIdHelp" class="form-text text-muted"> Confirm Password Help</small>
+      </div>
+    </fieldset>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+    <button type="button" class="btn btn-default" (click)="dismiss()">Cancel</button>
+  </div>
+</form>

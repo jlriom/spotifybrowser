@@ -1,0 +1,42 @@
+<h5>
+    Albums
+  </h5>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-12" *ngFor="let album of pagedAlbums.items">
+        <div class="media my-2">
+          <a [href]="album.spotifyUrl" target="_blank">
+            <img class="img-fluid img-thumbnail" style="width: 200px;" [src]="album.imageUrl" [alt]="album.name"
+              *ngIf="album.imageUrl">
+
+          </a>
+          <div class="media-body mx-4">
+            <h5 class="mt-0">
+              <a [routerLink]="[]" (click)="onAlbumSelected(album)">
+                {{ album.name }}
+              </a>
+              <small class="text-muted">
+                ({{ album.ReleaseYear }})
+              </small>
+            </h5>
+
+            <ul class="list-unstyled" *ngIf="album.artists.length > 1">
+              <li>
+                <strong class="text-muted">
+                  Artists
+                </strong>
+              </li>
+              <li *ngFor="let artist of album.artists">
+                <a [routerLink]="" (click)="onArtistSelected(artist)">
+                  {{ artist.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

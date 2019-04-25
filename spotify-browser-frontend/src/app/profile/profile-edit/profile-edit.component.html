@@ -1,0 +1,39 @@
+<form novalidate (ngSubmit)="saveMyProfile(myProfileForm)" #myProfileForm="ngForm">
+
+  <div class="modal-header">
+    <h4 class="modal-title">My profile</h4>
+
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <fieldset class="shadow-lg p-3  bg-white rounded">
+
+      <div class="form-group">
+        <label class="form-control-label"> My e-mail address: </label><br>
+        <strong> {{ email }} </strong>
+      </div>
+      <hr>
+
+      <div class="form-group">
+        <label class="form-control-label" for="firstnameId">First name</label>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': isNotValidControl(firstnameVar) }" id="firstnameId"
+          placeholder="First name" required minlength="3" [(ngModel)]="firstName" name="firstName" maxlength="300"
+          #firstnameVar="ngModel">
+      </div>
+      <div class="form-group">
+        <label class="form-control-label" for="lastnameId">Last name</label>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': isNotValidControl(lastnameVar) }" id="lastnameId"
+          placeholder="Last name" required minlength="3" maxlength="300" [(ngModel)]="lastName" name="lastName"
+          #lastnameVar="ngModel">
+      </div>
+    </fieldset>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning" (click)="unregister()" *ngIf="isUnregisterAllowed">Unregister me</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!myProfileForm.valid">Save</button>
+    <button type="button" class="btn btn-default" (click)="dismiss()">Cancel</button>
+  </div>
+</form>

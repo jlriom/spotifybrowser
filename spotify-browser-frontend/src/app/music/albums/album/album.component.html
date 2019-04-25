@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <h4 class="modal-title">Album</h4>
+
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <fieldset class="shadow-lg p-3  bg-white rounded">
+        <app-album-details [albumId]="albumId" (artistSelected)="onArtistSelected($event)" *ngIf="albumId"></app-album-details>
+    </fieldset>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="dismiss()">Close</button>
+</div>

@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-ms col-md-4" *ngIf="artist">
+      <app-artist-details [artist] = "artist" [artistsTopTracks]="artistsTopTracks"></app-artist-details>
+    </div>
+    <div class="col-ms col-md-6" *ngIf="pagedAlbums && pagedAlbums.total > 0">
+      <app-artist-albums [pagedAlbums]="pagedAlbums"></app-artist-albums>
+    </div>
+    <div class="col-ms col-md-2" *ngIf="relatedArtists">
+        <app-artist-related-artists [relatedArtists]="relatedArtists"></app-artist-related-artists>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container" *ngIf="category">
+  <div class="row  d-lg-none">
+    <div class="col">
+      <div class="h3">{{ category.name }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-none  d-lg-block  col-lg-2 ">
+      <div class="card mb-4">
+        <div class="card-header bg-light">
+          <h3 class="card-text ">{{ category.name }}</h3>
+        </div>
+        <img class="card-img-bottom img-fluid" [src]="category.imageUrl" [alt]="category.name" *ngIf="category.imageUrl">
+      </div>
+      <button class="btn btn-primary" (click)="backToCategories()"> Back to categories</button>
+    </div>
+
+    <div class="col-12 col-lg-10 " *ngIf="playLists">
+      <div class="row">
+
+        <div *ngFor="let playlist of playLists">
+          <div class="card mb-4" (click)="onPlayListClicked(playlist)">
+            <img class="card-img-top" [src]="playlist.imageUrl" [alt]="playlist.description" *ngIf="playlist.imageUrl">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row  d-lg-none">
+    <div class="col">
+      <button class="btn btn-primary" (click)="backToCategories()"> Back to categories</button>
+    </div>
+  </div>
+</div>
